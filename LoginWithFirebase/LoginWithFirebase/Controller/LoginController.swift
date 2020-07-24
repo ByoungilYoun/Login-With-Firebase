@@ -13,43 +13,20 @@ class LoginController : UIViewController {
   //MARK: - Properties
   private let iconImage = UIImageView(image: #imageLiteral(resourceName: "firebase-logo"))
   
-  private let emailTextField : UITextField = {
-    let tf = UITextField()
-    
-    let spacer = UIView()
-    spacer.setDimensions(height: 50, width: 12)
-    tf.leftView = spacer
-    tf.leftViewMode = .always
-    
-    tf.borderStyle = .none
-    tf.textColor = .white
-    tf.backgroundColor = UIColor(white: 1, alpha: 0.1)
-    tf.keyboardAppearance = .dark
-    tf.setHeight(height: 50)
-    tf.attributedPlaceholder = NSAttributedString(string: "Email",
-                                                  attributes: [.foregroundColor : UIColor(white: 1.0, alpha: 0.7)])
-    return tf
-  }()
+  private let emailTextField = CustomTextField(placeholder: "Email")
   
-  private let passwordTextField : UITextField = {
-    let tf = UITextField()
-    
-    let spacer = UIView()
-    spacer.setDimensions(height: 50, width: 12)
-    tf.leftView = spacer
-    tf.leftViewMode = .always
-    
-    tf.borderStyle = .none
-    tf.textColor = .white
+  private let passwordTextField : CustomTextField = {
+    let tf = CustomTextField(placeholder: "Password")
     tf.isSecureTextEntry = true
-    tf.backgroundColor = UIColor(white: 1, alpha: 0.1)
-    tf.setHeight(height: 50)
-    tf.keyboardAppearance = .dark
-    tf.attributedPlaceholder = NSAttributedString(string: "Password",
-                                                  attributes: [.foregroundColor : UIColor(white: 1.0, alpha: 0.7)])
     return tf
   }()
   
+  private let loginButton : AuthButton = {
+    let button = AuthButton(type: .system)
+    button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+    button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+    return button
+  }()
   //MARK: - LifeCycle
   
   override func viewDidLoad() {
@@ -57,6 +34,13 @@ class LoginController : UIViewController {
     
     configureUI()
   }
+  //MARK: - Selectors
+  
+  @objc func handleLogin () {
+    print("Denug : Handle Login ")
+  }
+  
+  //MARK: - Helpers
   
   func configureUI() {
     navigationController?.navigationBar.isHidden = true
@@ -73,7 +57,7 @@ class LoginController : UIViewController {
     iconImage.setDimensions(height: 120, width: 120)
     iconImage.anchor(top : view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
     
-    let stack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField])
+    let stack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, loginButton])
     stack.axis = .vertical
     stack.spacing = 20
     
