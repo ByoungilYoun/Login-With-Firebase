@@ -78,7 +78,8 @@ class LoginController : UIViewController {
   }
   
   @objc func showForgotPassword () {
-    print("Debug : Handle ForgotPassword")
+   let controller = ResetPasswordController()
+    navigationController?.pushViewController(controller, animated: true)
   }
   
   @objc func handleGoogleLogin() {
@@ -95,11 +96,7 @@ class LoginController : UIViewController {
     navigationController?.navigationBar.isHidden = true
     navigationController?.navigationBar.barStyle = .black
     
-    let gradient = CAGradientLayer()
-    gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
-    gradient.locations = [0, 1]
-    view.layer.addSublayer(gradient)
-    gradient.frame = view.frame
+    configureGradientBackground()
     
     view.addSubview(iconImage)
     iconImage.centerX(inView: view)
