@@ -23,6 +23,7 @@ class LoginController : UIViewController {
   
   private let loginButton : AuthButton = {
     let button = AuthButton(type: .system)
+    button.title = "Log In"
     button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
     button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
     return button
@@ -58,7 +59,7 @@ class LoginController : UIViewController {
     let boldAtts : [NSAttributedString.Key : Any] = [.foregroundColor : UIColor(white: 1, alpha: 0.87), .font : UIFont.boldSystemFont(ofSize: 16)]
     attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: boldAtts))
     button.setAttributedTitle(attributedTitle, for: .normal)
-    button.addTarget(self, action: #selector(showForgotPassword), for: .touchUpInside)
+    button.addTarget(self, action: #selector(showRegistrationController), for: .touchUpInside)
     return button
   }()
   
@@ -83,6 +84,11 @@ class LoginController : UIViewController {
   @objc func handleGoogleLogin() {
     print("Debug : Handle GoogleLogin")
   }
+  
+  @objc func showRegistrationController() {
+    let controller = RegistrationController()
+    navigationController?.pushViewController(controller, animated: true)
+  }
   //MARK: - Helpers
   
   func configureUI() {
@@ -100,14 +106,14 @@ class LoginController : UIViewController {
     iconImage.setDimensions(height: 120, width: 120)
     iconImage.anchor(top : view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
     
-    let stack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, loginButton, forgotPasswordButton, dividerView])
+    let stack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, loginButton])
     stack.axis = .vertical
     stack.spacing = 20
     
     view.addSubview(stack)
     stack.anchor(top : iconImage.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 32, paddingLeft: 32, paddingRight: 32)
     
-   
+    
     let stack2 = UIStackView(arrangedSubviews: [forgotPasswordButton, dividerView, googleLoginButton])
     stack2.axis = .vertical
     stack2.spacing = 28
