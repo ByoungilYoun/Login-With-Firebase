@@ -11,6 +11,9 @@ import UIKit
 class LoginController : UIViewController {
   
   //MARK: - Properties
+  
+  private var viewModel = LoginViewModel() 
+  
   private let iconImage = UIImageView(image: #imageLiteral(resourceName: "firebase-logo"))
   
   private let emailTextField = CustomTextField(placeholder: "Email")
@@ -68,8 +71,8 @@ class LoginController : UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     configureUI()
+    configureNotificationObservers()
   }
   //MARK: - Selectors
   
@@ -89,6 +92,16 @@ class LoginController : UIViewController {
   @objc func showRegistrationController() {
     let controller = RegistrationController()
     navigationController?.pushViewController(controller, animated: true)
+  }
+  
+  @objc func textDidChange(_ sender : UITextField) {
+    if sender == emailTextField {
+      viewModel.email = sender.text
+    } else {
+      viewModel.password = sender.text
+    }
+    
+    print("debug : form is valid \(viewModel.formIsValid)")
   }
   //MARK: - Helpers
   
@@ -122,5 +135,11 @@ class LoginController : UIViewController {
     view.addSubview(dontHaveAccountButton)
     dontHaveAccountButton.centerX(inView: view)
     dontHaveAccountButton.anchor(bottom : view.safeAreaLayoutGuide.bottomAnchor)
+  }
+  
+  func configureNotificationObservers() {
+    emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+
   }
 }
