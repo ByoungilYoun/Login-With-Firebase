@@ -101,9 +101,15 @@ class LoginController : UIViewController {
       viewModel.password = sender.text
     }
     
-    print("debug : form is valid \(viewModel.formIsValid)")
+    updateForm()
   }
   //MARK: - Helpers
+  
+  func updateForm() {
+    loginButton.isEnabled = viewModel.shouldEnableButton
+    loginButton.backgroundColor = viewModel.buttonBackgroundColor
+    loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+  }
   
   func configureUI() {
     navigationController?.navigationBar.isHidden = true
