@@ -10,6 +10,7 @@ import UIKit
 
 class RegistrationController : UIViewController {
   //MARK: - Properties
+  private var viewModel = RegistrationViewModel()
   
   private let iconImage = UIImageView(image: #imageLiteral(resourceName: "firebase-logo"))
   
@@ -46,6 +47,7 @@ class RegistrationController : UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configure()
+    configureNotificationObservers()
   }
   
   //MARK: - Selectors
@@ -58,6 +60,16 @@ class RegistrationController : UIViewController {
     navigationController?.popViewController(animated: true)
   }
   
+  @objc func textDidChange(_ sender : UITextField) {
+    if sender == emailTextField {
+      viewModel.email = sender.text
+    } else if sender == passwordTextField {
+      viewModel.password = sender.text
+    } else {
+      viewModel.fullname = sender.text
+    }
+    updateForm()
+  }
   //MARK: - Helpers
   
   func configure() {
@@ -78,5 +90,20 @@ class RegistrationController : UIViewController {
     view.addSubview(alreadyHaveAccountButton)
     alreadyHaveAccountButton.centerX(inView: view)
     alreadyHaveAccountButton.anchor(bottom : view.safeAreaLayoutGuide.bottomAnchor)
+  }
+  
+  func configureNotificationObservers() {
+    emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    fullNameTextField.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
+
+  }
+}
+
+extension RegistrationController : FormViewModel {
+  func updateForm() {
+    signUpButton.isEnabled = viewModel.shouldEnableButton
+    signUpButton.backgroundColor = viewModel.buttonBackgroundColor
+    signUpButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
   }
 }

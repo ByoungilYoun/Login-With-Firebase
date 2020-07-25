@@ -105,12 +105,6 @@ class LoginController : UIViewController {
   }
   //MARK: - Helpers
   
-  func updateForm() {
-    loginButton.isEnabled = viewModel.shouldEnableButton
-    loginButton.backgroundColor = viewModel.buttonBackgroundColor
-    loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
-  }
-  
   func configureUI() {
     navigationController?.navigationBar.isHidden = true
     navigationController?.navigationBar.barStyle = .black
@@ -147,5 +141,14 @@ class LoginController : UIViewController {
     emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
 
+  }
+}
+
+//MARK: - extension
+extension LoginController : FormViewModel {
+  func updateForm() {
+    loginButton.isEnabled = viewModel.shouldEnableButton
+    loginButton.backgroundColor = viewModel.buttonBackgroundColor
+    loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
   }
 }

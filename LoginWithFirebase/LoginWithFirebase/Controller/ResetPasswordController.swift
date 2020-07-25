@@ -10,7 +10,7 @@ import UIKit
 
 class ResetPasswordController : UIViewController {
   //MARK: - Properties
-  
+  private var viewModel = ResetPasswordViewModel()
   private let iconImage = UIImageView(image: #imageLiteral(resourceName: "firebase-logo"))
   private let emailTextField = CustomTextField(placeholder: "Email")
   
@@ -35,6 +35,7 @@ class ResetPasswordController : UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configure()
+    configureNotificationObservers()
   }
   
   //MARK: - Selectors 
@@ -45,6 +46,14 @@ class ResetPasswordController : UIViewController {
   @objc func handleDismissal() {
     navigationController?.popViewController(animated: true)
   }
+  
+  @objc func textDidChange(_ sender : UITextField) {
+    if sender == emailTextField {
+      viewModel.email = sender.text
+    } 
+    updateForm()
+  }
+  
   
   //MARK: - Helpers
   
@@ -59,7 +68,7 @@ class ResetPasswordController : UIViewController {
     iconImage.centerX(inView: view)
     iconImage.setDimensions(height: 120, width: 120)
     iconImage.anchor(top : view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
-
+    
     let stack = UIStackView(arrangedSubviews: [emailTextField, resetPasswordButton])
     stack.axis = .vertical
     stack.spacing = 20
@@ -67,4 +76,19 @@ class ResetPasswordController : UIViewController {
     view.addSubview(stack)
     stack.anchor(top : iconImage.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 32, paddingLeft: 32, paddingRight: 32)
   }
+  
+  func configureNotificationObservers() {
+    emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+  }
+}
+
+//MARK: - extension
+extension ResetPasswordController : FormViewModel {
+  func updateForm() {
+    resetPasswordButton.isEnabled = viewModel.shouldEnableButton
+    resetPasswordButton.backgroundColor = viewModel.buttonBackgroundColor
+    resetPasswordButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+  }
+  
+  
 }
