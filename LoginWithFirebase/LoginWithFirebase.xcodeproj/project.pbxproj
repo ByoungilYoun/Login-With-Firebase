@@ -18,6 +18,7 @@
 		0F47BA8424C8CAB400B9905E /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F47BA8324C8CAB400B9905E /* LoginController.swift */; };
 		0F47BA8624C8CCCB00B9905E /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F47BA8524C8CCCB00B9905E /* Extension.swift */; };
 		0F701CDD24CDDFA000D6A12F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F701CDC24CDDFA000D6A12F /* GoogleService-Info.plist */; };
+		0F701CDF24CDE78700D6A12F /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F701CDE24CDE78700D6A12F /* HomeController.swift */; };
 		0F7FA98524CC8A9C00107A2B /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7FA98424CC8A9C00107A2B /* AuthenticationViewModel.swift */; };
 		0FCDCB6024CB26A900ECACD4 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDCB5F24CB26A900ECACD4 /* CustomTextField.swift */; };
 		0FCDCB6224CB298900ECACD4 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDCB6124CB298900ECACD4 /* AuthButton.swift */; };
@@ -39,6 +40,7 @@
 		0F47BA8324C8CAB400B9905E /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		0F47BA8524C8CCCB00B9905E /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		0F701CDC24CDDFA000D6A12F /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		0F701CDE24CDE78700D6A12F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		0F7FA98424CC8A9C00107A2B /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		0FCDCB5F24CB26A900ECACD4 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		0FCDCB6124CB298900ECACD4 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				0F47BA8324C8CAB400B9905E /* LoginController.swift */,
 				0F2A5AAD24CB4267002B4A14 /* RegistrationController.swift */,
 				0F2A5AAF24CB471E002B4A14 /* ResetPasswordController.swift */,
+				0F701CDE24CDE78700D6A12F /* HomeController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				0FCDCB6024CB26A900ECACD4 /* CustomTextField.swift in Sources */,
 				0F47BA8424C8CAB400B9905E /* LoginController.swift in Sources */,
 				0F47BA6824C8C91300B9905E /* AppDelegate.swift in Sources */,
+				0F701CDF24CDE78700D6A12F /* HomeController.swift in Sources */,
 				0FCDCB6424CB384A00ECACD4 /* DividerView.swift in Sources */,
 				0F2A5AB024CB471E002B4A14 /* ResetPasswordController.swift in Sources */,
 				0F47BA6A24C8C91300B9905E /* SceneDelegate.swift in Sources */,
