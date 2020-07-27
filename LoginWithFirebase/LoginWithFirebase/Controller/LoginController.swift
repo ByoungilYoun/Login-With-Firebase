@@ -171,7 +171,11 @@ extension LoginController : FormViewModel {
 
 extension LoginController : GIDSignInDelegate {
   func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-    print("Debug : Handle Google Sign In")
+   
+    Service.signInWithGoogle(didSignInFor: user) { (error, ref) in
+      print("Debug : Successfully signed in with google")
+      self.dismiss(animated: true, completion: nil)
+    }
   }
   
   

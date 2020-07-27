@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import GoogleSignIn
 
 typealias DatabaseCompletion = ((Error?, DatabaseReference) -> Void)
 
@@ -32,7 +33,23 @@ struct Service {
     
   }
   
-  static func signInWithGoogle() {
+  static func signInWithGoogle(didSignInFor user : GIDGoogleUser, completion : @escaping(DatabaseCompletion) ) {
+    guard let authentication = user.authentication else {return}
+    let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
     
+    Auth.auth().signIn(with: credential) { (result, error) in
+      if let error = error {
+        print("Debug : Failed to sign in with google \(error.localizedDescription)")
+        return
+      }
+      
+      guard let uid = result?.user.uid else {return}
+      guard let email = result?.user.email else {return}
+      guard let fullname = result?.user.displayName else {return}
+      
+      let values = ["email" : email , "fullname" : fullname]
+           
+           Database.database().reference().child("users").child(uid).updateChildValues(values, withCompletionBlock: completion)
+    }
   }
 }
