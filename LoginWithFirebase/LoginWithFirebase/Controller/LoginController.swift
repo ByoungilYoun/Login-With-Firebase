@@ -83,18 +83,17 @@ class LoginController : UIViewController {
     guard let email = emailTextField.text else {return}
     guard let password = passwordTextField.text else {return}
     
-    Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+    Service.logUserIn(withEmail: email, password: password) { (result, error) in
       if let error = error {
         print("Debug : Error signing in \(error.localizedDescription)")
         return
       }
       self.dismiss(animated: true, completion: nil)
-      print("Debug : Successfully Logged in")
     }
   }
   
   @objc func showForgotPassword () {
-   let controller = ResetPasswordController()
+    let controller = ResetPasswordController()
     navigationController?.pushViewController(controller, animated: true)
   }
   

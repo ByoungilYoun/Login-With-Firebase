@@ -23,6 +23,7 @@
 		0FCDCB6024CB26A900ECACD4 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDCB5F24CB26A900ECACD4 /* CustomTextField.swift */; };
 		0FCDCB6224CB298900ECACD4 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDCB6124CB298900ECACD4 /* AuthButton.swift */; };
 		0FCDCB6424CB384A00ECACD4 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCDCB6324CB384A00ECACD4 /* DividerView.swift */; };
+		0FE70A9D24CF36CE009FFF3F /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE70A9C24CF36CE009FFF3F /* Service.swift */; };
 		6B50C67DAA6898D88E8F4CD4 /* Pods_LoginWithFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EAEF1E381A899AF7D9261D7 /* Pods_LoginWithFirebase.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		0FCDCB5F24CB26A900ECACD4 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		0FCDCB6124CB298900ECACD4 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		0FCDCB6324CB384A00ECACD4 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
+		0FE70A9C24CF36CE009FFF3F /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		2EAEF1E381A899AF7D9261D7 /* Pods_LoginWithFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoginWithFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B8C4A1558548035CA7EA712 /* Pods-LoginWithFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginWithFirebase.debug.xcconfig"; path = "Target Support Files/Pods-LoginWithFirebase/Pods-LoginWithFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 		8FFF95EC50A66FA6F77C6E45 /* Pods-LoginWithFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginWithFirebase.release.xcconfig"; path = "Target Support Files/Pods-LoginWithFirebase/Pods-LoginWithFirebase.release.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 		0F47BA8224C8CA7700B9905E /* API */ = {
 			isa = PBXGroup;
 			children = (
+				0FE70A9C24CF36CE009FFF3F /* Service.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F47BA8624C8CCCB00B9905E /* Extension.swift in Sources */,
+				0FE70A9D24CF36CE009FFF3F /* Service.swift in Sources */,
 				0F2A5AAE24CB4267002B4A14 /* RegistrationController.swift in Sources */,
 				0FCDCB6224CB298900ECACD4 /* AuthButton.swift in Sources */,
 				0F47BA6C24C8C91300B9905E /* ViewController.swift in Sources */,
