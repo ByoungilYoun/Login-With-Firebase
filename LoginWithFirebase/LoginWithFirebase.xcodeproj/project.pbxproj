@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F11117D24D097A200824518 /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11117C24D097A200824518 /* OnboardingController.swift */; };
+		0F11117F24D0A7A300824518 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11117E24D0A7A300824518 /* Constant.swift */; };
 		0F2A5AAE24CB4267002B4A14 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2A5AAD24CB4267002B4A14 /* RegistrationController.swift */; };
 		0F2A5AB024CB471E002B4A14 /* ResetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2A5AAF24CB471E002B4A14 /* ResetPasswordController.swift */; };
 		0F47BA6824C8C91300B9905E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F47BA6724C8C91300B9905E /* AppDelegate.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		0F11117C24D097A200824518 /* OnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
+		0F11117E24D0A7A300824518 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		0F2A5AAD24CB4267002B4A14 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		0F2A5AAF24CB471E002B4A14 /* ResetPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordController.swift; sourceTree = "<group>"; };
 		0F47BA6424C8C91300B9905E /* LoginWithFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginWithFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				0F47BA8524C8CCCB00B9905E /* Extension.swift */,
+				0F11117E24D0A7A300824518 /* Constant.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 			files = (
 				0F47BA8624C8CCCB00B9905E /* Extension.swift in Sources */,
 				0FE70A9D24CF36CE009FFF3F /* Service.swift in Sources */,
+				0F11117F24D0A7A300824518 /* Constant.swift in Sources */,
 				0F2A5AAE24CB4267002B4A14 /* RegistrationController.swift in Sources */,
 				0FCDCB6224CB298900ECACD4 /* AuthButton.swift in Sources */,
 				0F47BA6C24C8C91300B9905E /* ViewController.swift in Sources */,
