@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F11117D24D097A200824518 /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11117C24D097A200824518 /* OnboardingController.swift */; };
 		0F2A5AAE24CB4267002B4A14 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2A5AAD24CB4267002B4A14 /* RegistrationController.swift */; };
 		0F2A5AB024CB471E002B4A14 /* ResetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2A5AAF24CB471E002B4A14 /* ResetPasswordController.swift */; };
 		0F47BA6824C8C91300B9905E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F47BA6724C8C91300B9905E /* AppDelegate.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F11117C24D097A200824518 /* OnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
 		0F2A5AAD24CB4267002B4A14 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		0F2A5AAF24CB471E002B4A14 /* ResetPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordController.swift; sourceTree = "<group>"; };
 		0F47BA6424C8C91300B9905E /* LoginWithFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginWithFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +112,7 @@
 				0F2A5AAD24CB4267002B4A14 /* RegistrationController.swift */,
 				0F2A5AAF24CB471E002B4A14 /* ResetPasswordController.swift */,
 				0F701CDE24CDE78700D6A12F /* HomeController.swift */,
+				0F11117C24D097A200824518 /* OnboardingController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				0F47BA8424C8CAB400B9905E /* LoginController.swift in Sources */,
 				0F47BA6824C8C91300B9905E /* AppDelegate.swift in Sources */,
 				0F701CDF24CDE78700D6A12F /* HomeController.swift in Sources */,
+				0F11117D24D097A200824518 /* OnboardingController.swift in Sources */,
 				0FCDCB6424CB384A00ECACD4 /* DividerView.swift in Sources */,
 				0F2A5AB024CB471E002B4A14 /* ResetPasswordController.swift in Sources */,
 				0F47BA6A24C8C91300B9905E /* SceneDelegate.swift in Sources */,
