@@ -13,6 +13,8 @@ class HomeController : UIViewController {
   
   //MARK: - Properties
   
+  private var shouldShowOnboarding = true
+  
   //MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -39,6 +41,13 @@ class HomeController : UIViewController {
     self.present(navi, animated: true)
   }
   
+  fileprivate func presentOnboardingController() {
+    let controller = OnboardingController()
+    controller.delegate = self
+    controller.modalPresentationStyle = .fullScreen
+    present(controller, animated: true)
+  }
+  
   func authenticateUser() {
     if Auth.auth().currentUser?.uid == nil {
       DispatchQueue.main.async {
@@ -46,7 +55,10 @@ class HomeController : UIViewController {
         
       }
     } else {
-      print("Debug : User is logged in")
+      if shouldShowOnboarding {
+        presentOnboardingController()
+      }
+      
     }
   }
   
@@ -71,5 +83,14 @@ class HomeController : UIViewController {
     let image = UIImage(systemName: "arrow.left")
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleLogout))
     navigationItem.leftBarButtonItem?.tintColor = .white
+  }
+}
+
+extension HomeController : OnboardingControllerDelegate {
+  func controllerWantsToDismiss(_ controller: OnboardingController) {
+    controller.dismiss(animated: true, completion: nil)
+    shouldShowOnboarding.toggle()
+    
+    print("Debug : show onboarding is \(shouldShowOnboarding)")
   }
 }
