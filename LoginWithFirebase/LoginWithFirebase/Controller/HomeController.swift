@@ -34,18 +34,11 @@ class HomeController : UIViewController {
     present(alert, animated: true)
   }
   //MARK: - API
-  fileprivate func presentLoginController() {
-    let controller = LoginController()
-    let navi = UINavigationController(rootViewController: controller)
-    navi.modalPresentationStyle = .fullScreen
-    self.present(navi, animated: true)
-  }
-  
-  fileprivate func presentOnboardingController() {
-    let controller = OnboardingController()
-    controller.delegate = self
-    controller.modalPresentationStyle = .fullScreen
-    present(controller, animated: true)
+  func fetchUser() {
+    Service.fetchUser { user in
+      print("Debug : User is \(user.fullname)")
+      print("Debug : User has seen onboarding \(user.hasSeenOnboarding)")
+    }
   }
   
   func authenticateUser() {
@@ -55,9 +48,7 @@ class HomeController : UIViewController {
         
       }
     } else {
-      if shouldShowOnboarding {
-        presentOnboardingController()
-      }
+      fetchUser()
       
     }
   }
@@ -83,6 +74,20 @@ class HomeController : UIViewController {
     let image = UIImage(systemName: "arrow.left")
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleLogout))
     navigationItem.leftBarButtonItem?.tintColor = .white
+  }
+  
+  fileprivate func presentLoginController() {
+    let controller = LoginController()
+    let navi = UINavigationController(rootViewController: controller)
+    navi.modalPresentationStyle = .fullScreen
+    self.present(navi, animated: true)
+  }
+  
+  fileprivate func presentOnboardingController() {
+    let controller = OnboardingController()
+    controller.delegate = self
+    controller.modalPresentationStyle = .fullScreen
+    present(controller, animated: true)
   }
 }
 

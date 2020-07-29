@@ -13,10 +13,12 @@ import GoogleSignIn
 typealias DatabaseCompletion = ((Error?, DatabaseReference) -> Void)
 
 struct Service {
+  //MARK: - logUserIn
   static func logUserIn(withEmail email : String, password : String, completion : AuthDataResultCallback?) {
     Auth.auth().signIn(withEmail: email, password: password, completion: completion)
   }
   
+  //MARK: - registerUserWithFirebase
   static func registerUserWithFirebase(withEmail email : String, password : String, fullname : String, completion : @escaping(DatabaseCompletion)) {
     Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
       if let error = error {
@@ -26,13 +28,13 @@ struct Service {
       
       guard let uid = result?.user.uid else {return}
       
-      let values = ["email" : email , "fullname" : fullname]
+      let values = ["email" : email , "fullname" : fullname, "hasSeenOnboarding" : false] as [String : Any]
       
-      Database.database().reference().child("users").child(uid).updateChildValues(values, withCompletionBlock: completion)
+      REF_USERS.child(uid).updateChildValues(values, withCompletionBlock: completion)
     }
-    
   }
   
+  //MARK: - signInWithGoogle
   static func signInWithGoogle(didSignInFor user : GIDGoogleUser, completion : @escaping(DatabaseCompletion) ) {
     guard let authentication = user.authentication else {return}
     let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
@@ -47,9 +49,22 @@ struct Service {
       guard let email = result?.user.email else {return}
       guard let fullname = result?.user.displayName else {return}
       
-      let values = ["email" : email , "fullname" : fullname]
+      let values = ["email" : email , "fullname" : fullname, "hasSeenOnboarding" : false] as [String : Any]
+
            
-           Database.database().reference().child("users").child(uid).updateChildValues(values, withCompletionBlock: completion)
+          REF_USERS.child(uid).updateChildValues(values, withCompletionBlock: completion)
+    }
+  }
+  
+  static func fetchUser(completion : @escaping(User) -> Void) {
+    guard let uid = Auth.auth().currentUser?.uid else {return}
+    
+    REF_USERS.child(uid).observeSingleEvent(of: .value) { snapshot in
+      let uid = snapshot.key
+      guard let dictionary = snapshot.value as? [String:Any] else {return}
+      
+      let user = User(uid: uid, dictionary: dictionary)
+      completion(user)
     }
   }
 }

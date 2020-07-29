@@ -12,6 +12,7 @@
 		0F11118124D0B04300824518 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F11118024D0B04300824518 /* OnboardingViewModel.swift */; };
 		0F2A5AAE24CB4267002B4A14 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2A5AAD24CB4267002B4A14 /* RegistrationController.swift */; };
 		0F2A5AB024CB471E002B4A14 /* ResetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2A5AAF24CB471E002B4A14 /* ResetPasswordController.swift */; };
+		0F3B4BF324D1F8EE007F9DD9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3B4BF224D1F8EE007F9DD9 /* User.swift */; };
 		0F47BA6824C8C91300B9905E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F47BA6724C8C91300B9905E /* AppDelegate.swift */; };
 		0F47BA6A24C8C91300B9905E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F47BA6924C8C91300B9905E /* SceneDelegate.swift */; };
 		0F47BA6C24C8C91300B9905E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F47BA6B24C8C91300B9905E /* ViewController.swift */; };
@@ -36,6 +37,7 @@
 		0F11118024D0B04300824518 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		0F2A5AAD24CB4267002B4A14 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		0F2A5AAF24CB471E002B4A14 /* ResetPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordController.swift; sourceTree = "<group>"; };
+		0F3B4BF224D1F8EE007F9DD9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0F47BA6424C8C91300B9905E /* LoginWithFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoginWithFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F47BA6724C8C91300B9905E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F47BA6924C8C91300B9905E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				0F2A5AAD24CB4267002B4A14 /* RegistrationController.swift */,
 				0F2A5AAF24CB471E002B4A14 /* ResetPasswordController.swift */,
 				0F701CDE24CDE78700D6A12F /* HomeController.swift */,
+				0F3B4BF224D1F8EE007F9DD9 /* User.swift */,
 				0F11117C24D097A200824518 /* OnboardingController.swift */,
 			);
 			path = Controller;
@@ -322,6 +325,7 @@
 				0F2A5AAE24CB4267002B4A14 /* RegistrationController.swift in Sources */,
 				0FCDCB6224CB298900ECACD4 /* AuthButton.swift in Sources */,
 				0F47BA6C24C8C91300B9905E /* ViewController.swift in Sources */,
+				0F3B4BF324D1F8EE007F9DD9 /* User.swift in Sources */,
 				0F7FA98524CC8A9C00107A2B /* AuthenticationViewModel.swift in Sources */,
 				0FCDCB6024CB26A900ECACD4 /* CustomTextField.swift in Sources */,
 				0F47BA8424C8CAB400B9905E /* LoginController.swift in Sources */,
