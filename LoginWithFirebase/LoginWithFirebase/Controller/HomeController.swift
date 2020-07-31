@@ -96,6 +96,7 @@ class HomeController : UIViewController {
   
   fileprivate func showWelcomeLabel() {
     guard let user = user else {return}
+    guard user.hasSeenOnboarding else {return}
     
     welcomeLabel.text = "Welcome, \(user.fullname)"
     UIView.animate(withDuration: 1) {
@@ -106,6 +107,7 @@ class HomeController : UIViewController {
   
   fileprivate func presentLoginController() {
     let controller = LoginController()
+    controller.delegate = self
     let navi = UINavigationController(rootViewController: controller)
     navi.modalPresentationStyle = .fullScreen
     self.present(navi, animated: true)
@@ -122,6 +124,8 @@ class HomeController : UIViewController {
   }
 }
 
+//MARK: - OnboardingControllerDelegate
+
 extension HomeController : OnboardingControllerDelegate {
   func controllerWantsToDismiss(_ controller: OnboardingController) {
     controller.dismiss(animated: true, completion: nil)
@@ -130,5 +134,12 @@ extension HomeController : OnboardingControllerDelegate {
       self.user?.hasSeenOnboarding = true
       print("Debug : Did set has seen onboarding ")
     }
+  }
+}
+
+extension HomeController : AuthenticationDelegate {
+  func authenticationComplete() {
+    dismiss(animated: true, completion: nil)
+    fetchUser()
   }
 }
