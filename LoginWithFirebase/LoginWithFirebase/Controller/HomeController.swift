@@ -13,7 +13,11 @@ class HomeController : UIViewController {
   
   //MARK: - Properties
   
-  private var shouldShowOnboarding = true
+  private var user : User? {
+    didSet {
+      presentOnboardingIfNeccessary()
+    }
+  }
   
   //MARK: - LifeCycle
   override func viewDidLoad() {
@@ -36,8 +40,8 @@ class HomeController : UIViewController {
   //MARK: - API
   func fetchUser() {
     Service.fetchUser { user in
-      print("Debug : User is \(user.fullname)")
-      print("Debug : User has seen onboarding \(user.hasSeenOnboarding)")
+      self.user = user
+      
     }
   }
   
@@ -83,7 +87,10 @@ class HomeController : UIViewController {
     self.present(navi, animated: true)
   }
   
-  fileprivate func presentOnboardingController() {
+  fileprivate func presentOnboardingIfNeccessary() {
+    guard let user = user else {return}
+    guard !user.hasSeenOnboarding else {return}
+    
     let controller = OnboardingController()
     controller.delegate = self
     controller.modalPresentationStyle = .fullScreen
@@ -94,8 +101,10 @@ class HomeController : UIViewController {
 extension HomeController : OnboardingControllerDelegate {
   func controllerWantsToDismiss(_ controller: OnboardingController) {
     controller.dismiss(animated: true, completion: nil)
-    shouldShowOnboarding.toggle()
     
-    print("Debug : show onboarding is \(shouldShowOnboarding)")
+    Service.updateUserHasSeenOnboarding { (error, ref) in
+      self.user?.hasSeenOnboarding = true
+      print("Debug : Did set has seen onboarding ")
+    }
   }
 }

@@ -67,4 +67,9 @@ struct Service {
       completion(user)
     }
   }
+  
+  static func updateUserHasSeenOnboarding(completion : @escaping(DatabaseCompletion)) {
+    guard let uid = Auth.auth().currentUser?.uid else {return}
+    REF_USERS.child(uid).child("hasSeenOnboarding").setValue(true, withCompletionBlock: completion)
+  }
 }
