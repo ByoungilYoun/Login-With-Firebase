@@ -16,8 +16,18 @@ class HomeController : UIViewController {
   private var user : User? {
     didSet {
       presentOnboardingIfNeccessary()
+      showWelcomeLabel()
     }
   }
+  
+  private let welcomeLabel : UILabel = {
+    let label = UILabel()
+    label.textColor = .white
+    label.font = UIFont.systemFont(ofSize: 28)
+    label.text = "Welcome User"
+    label.alpha = 0
+    return label
+  }()
   
   //MARK: - LifeCycle
   override func viewDidLoad() {
@@ -78,6 +88,20 @@ class HomeController : UIViewController {
     let image = UIImage(systemName: "arrow.left")
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleLogout))
     navigationItem.leftBarButtonItem?.tintColor = .white
+    
+    view.addSubview(welcomeLabel)
+    welcomeLabel.centerX(inView: view)
+    welcomeLabel.centerY(inView: view)
+  }
+  
+  fileprivate func showWelcomeLabel() {
+    guard let user = user else {return}
+    
+    welcomeLabel.text = "Welcome, \(user.fullname)"
+    UIView.animate(withDuration: 1) {
+      self.welcomeLabel.alpha = 1
+    }
+    
   }
   
   fileprivate func presentLoginController() {
