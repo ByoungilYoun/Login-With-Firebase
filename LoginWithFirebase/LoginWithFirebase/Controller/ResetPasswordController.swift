@@ -8,9 +8,16 @@
 
 import UIKit
 
+protocol ResetPasswordControllerDelegate : class {
+  func didSendResetPasswordLink()
+}
+
 class ResetPasswordController : UIViewController {
   //MARK: - Properties
   private var viewModel = ResetPasswordViewModel()
+  weak var delegate : ResetPasswordControllerDelegate?
+  var email : String?
+  
   private let iconImage = UIImageView(image: #imageLiteral(resourceName: "firebase-logo"))
   private let emailTextField = CustomTextField(placeholder: "Email")
   
@@ -36,11 +43,20 @@ class ResetPasswordController : UIViewController {
     super.viewDidLoad()
     configure()
     configureNotificationObservers()
+    loadEmail()
   }
   
   //MARK: - Selectors 
   @objc func handleResetPassword() {
-    
+    guard let email = viewModel.email else {return}
+    Service.resetPassword(forEmail: email) { error in
+      if let error = error {
+        print("Debug : Failed to reset password \(error.localizedDescription)")
+        return
+      }
+      
+      self.delegate?.didSendResetPasswordLink()
+    }
   }
   
   @objc func handleDismissal() {
@@ -77,6 +93,14 @@ class ResetPasswordController : UIViewController {
     stack.anchor(top : iconImage.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 32, paddingLeft: 32, paddingRight: 32)
   }
   
+  func loadEmail () {
+    guard let email = email else {return}
+    viewModel.email = email
+    emailTextField.text  = email
+    
+    updateForm()
+  }
+  
   func configureNotificationObservers() {
     emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
   }
@@ -89,6 +113,4 @@ extension ResetPasswordController : FormViewModel {
     resetPasswordButton.backgroundColor = viewModel.buttonBackgroundColor
     resetPasswordButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
   }
-  
-  
 }

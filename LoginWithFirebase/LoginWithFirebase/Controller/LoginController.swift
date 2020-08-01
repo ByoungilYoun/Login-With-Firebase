@@ -99,6 +99,8 @@ class LoginController : UIViewController {
   
   @objc func showForgotPassword () {
     let controller = ResetPasswordController()
+    controller.email = emailTextField.text
+    controller.delegate = self 
     navigationController?.pushViewController(controller, animated: true)
   }
   
@@ -166,7 +168,7 @@ class LoginController : UIViewController {
   }
 }
 
-//MARK: - extension
+//MARK: - FormViewModel
 extension LoginController : FormViewModel {
   func updateForm() {
     loginButton.isEnabled = viewModel.shouldEnableButton
@@ -175,6 +177,7 @@ extension LoginController : FormViewModel {
   }
 }
 
+//MARK: - GIDSignInDelegate
 extension LoginController : GIDSignInDelegate {
   func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
    
@@ -184,3 +187,12 @@ extension LoginController : GIDSignInDelegate {
     }
   }
 }
+
+//MARK: - ResetPasswordControllerDelegate
+extension LoginController : ResetPasswordControllerDelegate {
+  func didSendResetPasswordLink() {
+    navigationController?.popViewController(animated: true)
+      print("Debug : Show success message here...")
+    }
+  }
+
