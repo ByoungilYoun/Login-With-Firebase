@@ -88,9 +88,13 @@ class LoginController : UIViewController {
     guard let email = emailTextField.text else {return}
     guard let password = passwordTextField.text else {return}
     
+    showLoader(true)
+    
     Service.logUserIn(withEmail: email, password: password) { (result, error) in
+      self.showLoader(false)
       if let error = error {
         print("Debug : Error signing in \(error.localizedDescription)")
+        
         return
       }
       self.delegate?.authenticationComplete()
