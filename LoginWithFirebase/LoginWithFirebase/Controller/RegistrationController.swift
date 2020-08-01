@@ -67,7 +67,7 @@ class RegistrationController : UIViewController {
      self.showLoader(false)
 
       if let error = error {
-        print("Debug : Error signing up \(error.localizedDescription)")
+        self.showMessage(withTitle: "Error", message: error.localizedDescription)
         return
       }
      

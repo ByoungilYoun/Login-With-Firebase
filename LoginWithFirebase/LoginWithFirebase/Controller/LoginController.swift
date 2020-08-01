@@ -93,7 +93,7 @@ class LoginController : UIViewController {
     Service.logUserIn(withEmail: email, password: password) { (result, error) in
       self.showLoader(false)
       if let error = error {
-        print("Debug : Error signing in \(error.localizedDescription)")
+        self.showMessage(withTitle: "Error", message: error.localizedDescription)
         
         return
       }
@@ -196,7 +196,7 @@ extension LoginController : GIDSignInDelegate {
 extension LoginController : ResetPasswordControllerDelegate {
   func didSendResetPasswordLink() {
     navigationController?.popViewController(animated: true)
-      print("Debug : Show success message here...")
+    self.showMessage(withTitle: "Success", message: MSG_RESET_PASSWORD_LINK_SENT)
     }
   }
 

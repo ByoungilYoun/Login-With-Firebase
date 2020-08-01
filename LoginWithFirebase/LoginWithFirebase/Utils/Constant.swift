@@ -19,3 +19,5 @@ let MSG_ONBOARDING_DASHBOARD = "Everything you need all in one place, available 
 
 let DB_REF =  Database.database().reference()
 let REF_USERS = DB_REF.child("users")
+
+let MSG_RESET_PASSWORD_LINK_SENT = "We sent a link to your email to reset your password"
